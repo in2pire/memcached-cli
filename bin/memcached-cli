@@ -20,5 +20,5 @@ chdir(APP_PATH);
 require APP_PATH . '/../vendor/autoload.php';
 
 // Run application.
-$app = new In2pire\Cli\CliApplication();
+$app = new In2pire\Memcached\Cli\Application();
 $app->run();
