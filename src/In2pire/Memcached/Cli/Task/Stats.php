@@ -71,12 +71,12 @@ final class Stats extends \In2pire\Cli\Task\CliTask
     /**
      * @inheritdoc
      */
-    public function run(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $stats = $this->getConnection()->getStats();
 
         if (empty($stats)) {
-            return 1;
+            return static::RETURN_ERROR;
         }
 
         $this->render($stats, $output);

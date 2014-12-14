@@ -87,14 +87,16 @@ final class Get extends \In2pire\Cli\Task\CliTask
     /**
      * @inheritdoc
      */
-    public function run(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $key = $input->getArgument('key');
         $hash = $this->getHashFunction();
         $data = $this->getConnection()->get($key, $hash);
 
         if (empty($data)) {
-            throw new \RuntimeException('Could not found ' . $key . (empty($hash) ? '' : (' using ' . $hash)));
+            $message = 'Could not found ' . $key . (empty($hash) ? '' : (' using ' . $hash));
+            $output->writeln('<error>' . $message . '</error>');
+            return static::RETURN_ERROR;
         }
 
         $this->render($data, $output);
