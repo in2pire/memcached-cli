@@ -1,0 +1,5 @@
+name: Memcached Cli
+version: '1.0.0-dev'
+commands:
+  - in2pire.memcached.cli.command.stats
+  - in2pire.memcached.cli.command.get

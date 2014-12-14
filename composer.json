@@ -1,0 +1,31 @@
+{
+    "name": "in2pire/memcached-cli",
+    "description": "IN2PIRE Memcached CLI",
+    "license": "MIT",
+    "keywords": ["in2pire", "inspire", "cli", "console", "memcache", "memcached"],
+    "authors": [
+        {
+            "name": "Nhat Tran",
+            "email": "nhat.tran@inspire.vn",
+            "homepage": "http://inspire.vn",
+            "role": "Founder"
+        }
+    ],
+    "support": {
+        "email": "nhat.tran@inspire.vn"
+    },
+    "require": {
+        "php": ">=5.4",
+        "symfony/process": ">=2.5",
+        "in2pire/utility": "dev-master",
+        "in2pire/cli": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "In2pire\\Memcached\\": "src/In2pire/Memcached/" }
+    },
+    "config": {
+        "bin-dir": "bin/",
+        "vendor-dir": "vendor/",
+        "autoloader-suffix": "In2pireMamchedCli"
+    }
+}
