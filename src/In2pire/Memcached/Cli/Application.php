@@ -31,6 +31,17 @@ class Application extends \In2pire\Cli\CliApplication
             return false;
         }
 
+        $description = $this->runner->getDescription();
+
+        if (!empty($description)) {
+            $description .= "\n\n";
+        }
+
+        $description .= '<comment>igbinary support</comment>  ' . (\Memcached::HAVE_IGBINARY ? 'yes' : 'no') . "\n";
+        $description .= '<comment>json support</comment>      ' . (\Memcached::HAVE_JSON ? 'yes' : 'no');
+
+        $this->runner->setDescription($description);
+
         return $this;
     }
 }
