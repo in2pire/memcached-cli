@@ -10,11 +10,10 @@ if (PHP_SAPI !== 'cli') {
     exit(1);
 }
 
-define('APP_PATH', dirname(__FILE__));
-define('CLI_CONF_PATH', APP_PATH . '/../conf');
+define('APP_NAME', 'memcached-cli');
+define('APP_PATH', __DIR__);
+define('APP_CONF_PATH', APP_PATH . '/../conf/' . APP_NAME);
 define('REQUEST_TIME', (int) $_SERVER['REQUEST_TIME']);
-
-chdir(APP_PATH);
 
 // Add class loader.
 require APP_PATH . '/../vendor/autoload.php';
