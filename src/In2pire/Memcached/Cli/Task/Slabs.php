@@ -103,18 +103,18 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
         }
 
         $headers = [
-            '  #',
-            ' Item Size',
-            '   Max Age',
-            '  Pages',
-            '  Count',
-            ' Full?',
-            ' Evicted',
-            ' Evicted Time',
-            ' OOM',
-            ' Chunks Size',
-            ' Pages Size',
-            ' Wasted'
+            sprintf('%3s', '#'),
+            sprintf('%10s', 'Item Size'),
+            sprintf('%10s', 'Max Age'),
+            sprintf('%7s', 'Pages'),
+            sprintf('%7s', 'Count'),
+            sprintf('%6s', 'Full?'),
+            sprintf('%8s', 'Evicted'),
+            sprintf('%13s', 'Evicted Time'),
+            sprintf('%4s', 'OOM'),
+            sprintf('%12s', 'Chunks Size'),
+            sprintf('%11s', 'Pages Size'),
+            sprintf('%7s','Wasted'),
         ];
 
         $rows = [];
