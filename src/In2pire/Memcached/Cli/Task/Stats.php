@@ -28,17 +28,6 @@ final class Stats extends \In2pire\Cli\Task\CliTask
     protected $id = 'stats';
 
     /**
-     * Get display format
-     *
-     * @return string
-     *   Format.
-     */
-    public function getFormat()
-    {
-        return $this->data['format'];
-    }
-
-    /**
      * Render data.
      *
      * @param array $stats

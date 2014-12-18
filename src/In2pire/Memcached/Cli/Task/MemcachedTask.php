@@ -10,6 +10,8 @@
 
 namespace In2pire\Memcached\Cli\Task;
 
+use Symfony\Component\Console\Output\OutputInterface;
+
 /**
  * Core Memcached Task.
  */
@@ -46,5 +48,52 @@ trait MemcachedTask
     public function getPort()
     {
         return $this->data['port'];
+    }
+
+    /**
+     * Get display format
+     *
+     * @return string
+     *   Format.
+     */
+    public function getFormat()
+    {
+        return $this->data['format'];
+    }
+
+    /**
+     * Render item value.
+     *
+     * @param Symfony\Component\Console\Output\OutputInterface $output
+     *   Output stream.
+     * @param mixed $data
+     *   Data.
+     * @param string $format
+     *   Format. Possible values: json (default), export, dump, serialize.
+     */
+    public function renderItemValue(OutputInterface $output, $data, $format)
+    {
+        switch ($format) {
+            default:
+            case 'json':
+                $data = json_encode($data);
+                break;
+
+            case 'export':
+                $data = var_export($data, true);
+                break;
+
+            case 'dump':
+                ob_start();
+                var_dump($data);
+                $data = ob_get_clean();
+                break;
+
+            case 'serialize':
+                $data = serialize($data);
+                break;
+        }
+
+        $output->writeln($data);
     }
 }

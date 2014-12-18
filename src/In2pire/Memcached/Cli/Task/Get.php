@@ -27,17 +27,6 @@ final class Get extends \In2pire\Cli\Task\CliTask
     protected $id = 'get';
 
     /**
-     * Get display format
-     *
-     * @return string
-     *   Format.
-     */
-    public function getFormat()
-    {
-        return $this->data['format'];
-    }
-
-    /**
      * Get hash function
      *
      * @return string
@@ -46,42 +35,6 @@ final class Get extends \In2pire\Cli\Task\CliTask
     public function getHashFunction()
     {
         return $this->data['hash'];
-    }
-
-    /**
-     * Render data.
-     *
-     * @param array $stats
-     *   Server statistics.
-     * @param Symfony\Component\Console\Output\OutputInterface $output
-     *   Output stream
-     */
-    protected function render($data, OutputInterface $output)
-    {
-        $format = $this->getFormat();
-
-        switch ($format) {
-            case 'json':
-                $data = json_encode($data);
-                break;
-
-            case 'export':
-                $data = var_export($data, true);
-                break;
-
-            case 'dump':
-                ob_start();
-                var_dump($data);
-                $data = ob_get_clean();
-                break;
-
-            default:
-            case 'serialize':
-                $data = serialize($data);
-                break;
-        }
-
-        $output->writeln($data);
     }
 
     /**
@@ -99,6 +52,6 @@ final class Get extends \In2pire\Cli\Task\CliTask
             return static::RETURN_ERROR;
         }
 
-        $this->render($data, $output);
+        $this->renderItemValue($output, $data, $this->getFormat());
     }
 }

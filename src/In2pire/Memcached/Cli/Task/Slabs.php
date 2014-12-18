@@ -28,17 +28,6 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
     protected $id = 'slabs';
 
     /**
-     * Get display format
-     *
-     * @return string
-     *   Format.
-     */
-    public function getFormat()
-    {
-        return $this->data['format'];
-    }
-
-    /**
      * Refine data.
      *
      * @param array $stats
