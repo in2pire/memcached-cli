@@ -30,14 +30,15 @@ final class Sizes extends \In2pire\Cli\Task\CliTask
     /**
      * Render data.
      *
-     * @param array $stats
-     *   Sizes statistics.
      * @param Symfony\Component\Console\Output\OutputInterface $output
      *   Output stream.
+     * @param array $stats
+     *   Sizes statistics.
+     * @param string $format
+     *   Format. Possible values: json, table (default).
      */
-    protected function render($stats, OutputInterface $output)
+    protected function render(OutputInterface $output, $stats, $format = 'table')
     {
-        $format = $this->getFormat();
         ksort($stats);
 
         if ('json' == $format) {
@@ -78,6 +79,6 @@ final class Sizes extends \In2pire\Cli\Task\CliTask
             return static::RETURN_ERROR;
         }
 
-        $this->render($stats, $output);
+        $this->render($output, $stats, $this->getFormat());
     }
 }

@@ -30,23 +30,23 @@ final class Settings extends \In2pire\Cli\Task\CliTask
     /**
      * Render data.
      *
-     * @param array $stats
-     *   Server statistics.
      * @param Symfony\Component\Console\Output\OutputInterface $output
-     *   Output stream
+     *   Output stream.
+     * @param array $settings
+     *   Server settings.
+     * @param string $format
+     *   Format. Possible values: json, table (default).
      */
-    protected function render($stats, OutputInterface $output)
+    protected function render(OutputInterface $output, $settings, $format = 'table')
     {
-        $format = $this->getFormat();
-
         if ('json' == $format) {
-            $output->writeln(json_encode($stats));
+            $output->writeln(json_encode($settings));
             return;
         }
 
         $rows = [];
 
-        foreach ($stats as $key => $value) {
+        foreach ($settings as $key => $value) {
             $rows[] = [$key, $value];
         }
 
@@ -62,12 +62,12 @@ final class Settings extends \In2pire\Cli\Task\CliTask
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $stats = $this->getConnection()->getSettings();
+        $settings = $this->getConnection()->getSettings();
 
-        if (empty($stats)) {
+        if (empty($settings)) {
             return static::RETURN_ERROR;
         }
 
-        $this->render($stats, $output);
+        $this->render($output, $settings, $this->getFormat());
     }
 }

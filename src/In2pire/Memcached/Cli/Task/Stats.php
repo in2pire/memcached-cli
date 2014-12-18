@@ -30,15 +30,15 @@ final class Stats extends \In2pire\Cli\Task\CliTask
     /**
      * Render data.
      *
+     * @param Symfony\Component\Console\Output\OutputInterface $output
+     *   Output stream.
      * @param array $stats
      *   Server statistics.
-     * @param Symfony\Component\Console\Output\OutputInterface $output
-     *   Output stream
+     * @param string $format
+     *   Format. Possible values: json, table (default).
      */
-    protected function render($stats, OutputInterface $output)
+    protected function render(OutputInterface $output, $stats, $format = 'table')
     {
-        $format = $this->getFormat();
-
         if ('json' == $format) {
             $output->writeln(json_encode($stats));
             return;
@@ -68,6 +68,6 @@ final class Stats extends \In2pire\Cli\Task\CliTask
             return static::RETURN_ERROR;
         }
 
-        $this->render($stats, $output);
+        $this->render($output, $stats, $this->getFormat());
     }
 }

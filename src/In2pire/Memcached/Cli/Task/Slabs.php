@@ -30,18 +30,18 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
     /**
      * Refine data.
      *
-     * @param array $stats
-     *   Statistics.
+     * @param array $slabs
+     *   Slabs.
      *
      * @return array
      *   Refined data.
      */
-    protected function refineData($stats)
+    protected function refineData($slabs)
     {
         $return = [];
         $pow1024 = 1024 * 1024;
 
-        foreach ($stats as $slabId => $slabStats) {
+        foreach ($slabs as $slabId => $slabStats) {
             if (empty($slabStats['total_pages'])) {
                 continue;
             }
@@ -75,19 +75,19 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
     }
 
     /**
-     * Render data.
+     * Render slabs.
      *
-     * @param array $stats
-     *   Server statistics.
      * @param Symfony\Component\Console\Output\OutputInterface $output
-     *   Output stream
+     *   Output stream.
+     * @param array $slabs
+     *   Slabs.
+     * @param string $format
+     *   Format. Possible values: json, table (default).
      */
-    protected function render($stats, OutputInterface $output)
+    protected function render(OutputInterface $output, $slabs, $format = 'table')
     {
-        $format = $this->getFormat();
-
         if ('json' == $format) {
-            $output->writeln(json_encode($stats));
+            $output->writeln(json_encode($slabs));
             return;
         }
 
@@ -108,7 +108,7 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
 
         $rows = [];
 
-        foreach ($stats as $slabStats) {
+        foreach ($slabs as $slabStats) {
             $rows[] = [
                 sprintf('%3d', $slabStats['id']),
                 sprintf('%10s', $slabStats['item_size']),
@@ -138,14 +138,14 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $stats = $this->getConnection()->getSlabsStats();
+        $slabs = $this->getConnection()->getSlabsStats();
 
-        if (empty($stats)) {
+        if (empty($slabs)) {
             return static::RETURN_ERROR;
         }
 
-        $stats = $this->refineData($stats);
+        $slabs = $this->refineData($slabs);
 
-        $this->render($stats, $output);
+        $this->render($output, $slabs, $this->getFormat());
     }
 }
