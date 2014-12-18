@@ -158,6 +158,40 @@ class Client
         return $stats;
     }
 
+    public function getSlabs()
+    {
+        $stats = [];
+        $data = $this->request('stats items');
+
+        if (!empty($data)) {
+            $rows = explode("\n", $data);
+
+            foreach ($rows as $row) {
+                $row = trim($row);
+
+                if (preg_match('#^STAT items:(?<id>\d+):(?<property>\w+) (?<value>\d+)$#', $row, $match)) {
+                    $stats[$match['id']][$match['property']] = $match['value'];
+                }
+            }
+        }
+
+        $data = $this->request('stats slabs');
+
+        if (!empty($data)) {
+            $rows = explode("\n", $data);
+
+            foreach ($rows as $row) {
+                $row = trim($row);
+
+                if (preg_match('#^STAT (?<id>\d+):(?<property>\w+) (?<value>\d+)$#', $row, $match)) {
+                    $stats[$match['id']][$match['property']] = $match['value'];
+                }
+            }
+        }
+
+        return $stats;
+    }
+
     /**
      * Get data by key.
      *

@@ -1,0 +1,24 @@
+description: Show slabs stats
+arguments:
+options:
+  host:
+    name: host
+    mode: 4
+    default: localhost
+    description: 'Hostname'
+  port:
+    name: port
+    mode: 4
+    default: 11211
+    description: 'Port'
+  format:
+    name: format
+    mode: 4
+    default: table
+    description: 'Display result as table or json. Possible values: table, json'
+questions:
+validators:
+  - in2pire.memcached.cli.validator.memcached-connection
+  - in2pire.memcached.cli.validator.statistics-formatter
+tasks:
+  - in2pire.memcached.cli.task.slabs
