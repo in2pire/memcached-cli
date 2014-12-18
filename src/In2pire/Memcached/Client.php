@@ -221,6 +221,35 @@ class Client
     }
 
     /**
+     * Get server settings.
+     *
+     * @return array
+     *   Settings.
+     */
+    public function getSettings()
+    {
+        $settings = [];
+        $data = $this->request('stats settings');
+
+        if (empty($data)) {
+            return false;
+        }
+
+        $rows = explode("\n", $data);
+
+        foreach ($rows as $row) {
+            $row = trim($row);
+
+            if (0 === strpos($row, 'STAT ')) {
+                list($key, $value) = explode(' ', substr($row, 5), 2);
+                $settings[$key] = trim($value);
+            }
+        }
+
+        return $settings;
+    }
+
+    /**
      * Get data by key.
      *
      * @param string $key
