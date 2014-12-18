@@ -83,7 +83,7 @@ final class Sizes extends \In2pire\Cli\Task\CliTask
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $stats = $this->getConnection()->getSizes();
+        $stats = $this->getConnection()->getSizesStats();
 
         if (empty($stats)) {
             return static::RETURN_ERROR;

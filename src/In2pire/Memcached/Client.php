@@ -158,7 +158,7 @@ class Client
         return $stats;
     }
 
-    public function getSlabs()
+    public function getSlabsStats()
     {
         $stats = [];
         $data = $this->request('stats items');
@@ -198,7 +198,7 @@ class Client
      * @return array
      *   Stats.
      */
-    public function getSizes()
+    public function getSizesStats()
     {
         $stats = [];
         $data = $this->request('stats sizes');

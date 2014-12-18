@@ -149,7 +149,7 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $stats = $this->getConnection()->getSlabs();
+        $stats = $this->getConnection()->getSlabsStats();
 
         if (empty($stats)) {
             return static::RETURN_ERROR;
