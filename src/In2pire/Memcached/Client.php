@@ -298,6 +298,74 @@ class Client
     }
 
     /**
+     * Get keys in a slab.
+     *
+     * @param int $slab
+     *   Slab ID.
+     * @param int $limit
+     *   (optional) Limit keys.
+     *
+     * @return array|boolean
+     *   List of keys or false.
+     */
+    public function getAllKeysInSlab($slab, $limit = 0)
+    {
+        $data = $this->request('stats cachedump ' . $slab . ' ' . $limit);
+        $key = null;
+
+        if (empty($data)) {
+            return false;
+        }
+
+        preg_match_all('#ITEM (?<key>[^\s]+)#', $data, $match);
+
+        if (empty($match['key'])) {
+            return false;
+        }
+
+        return $match['key'];
+    }
+
+    /**
+     * Get keys in server.
+     *
+     * @return array|boolean
+     *   List of keys or false.
+     */
+    public function getAllKeys()
+    {
+        $data = $this->request('stats items');
+
+        if (empty($data)) {
+            return false;
+        }
+
+        preg_match_all('#STAT items:(?<id>\d+):number (?<number>\d+)#', $data, $match);
+
+        if (empty($match['id'])) {
+            return false;
+        }
+
+        $keys = [];
+
+        foreach ($match['id'] as $index => $slab) {
+            $numKeys = (int) $match['number'][$index];
+
+            if ($numKeys < 1) {
+                continue;
+            }
+
+            $slabKeys = $this->getAllKeysInSlab($slab);
+
+            if (is_array($slabKeys)) {
+                $keys = array_merge($keys, $slabKeys);
+            }
+        }
+
+        return $keys;
+    }
+
+    /**
      * Get data by key.
      *
      * @param string $key
