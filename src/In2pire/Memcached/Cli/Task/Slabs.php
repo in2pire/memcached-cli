@@ -38,6 +38,15 @@ final class Slabs extends \In2pire\Cli\Task\CliTask
         return $this->data['format'];
     }
 
+    /**
+     * Refine data.
+     *
+     * @param array $stats
+     *   Statistics.
+     *
+     * @return array
+     *   Refined data.
+     */
     protected function refineData($stats)
     {
         $return = [];
