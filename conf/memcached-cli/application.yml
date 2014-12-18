@@ -4,4 +4,5 @@ build: '@build'
 commands:
   - in2pire.memcached.cli.command.stats
   - in2pire.memcached.cli.command.slabs
+  - in2pire.memcached.cli.command.sizes
   - in2pire.memcached.cli.command.get

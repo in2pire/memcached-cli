@@ -193,6 +193,34 @@ class Client
     }
 
     /**
+     * Get sizes statistics.
+     *
+     * @return array
+     *   Stats.
+     */
+    public function getSizes()
+    {
+        $stats = [];
+        $data = $this->request('stats sizes');
+
+        if (empty($data)) {
+            return false;
+        }
+
+        $rows = explode("\n", $data);
+
+        foreach ($rows as $row) {
+            $row = trim($row);
+
+            if (preg_match('#^STAT\s+(?<key>\S*)\s+(?<value>.*)$#', $row, $match)) {
+                $stats[$match['key']] = $match['value'];
+            }
+        }
+
+        return $stats;
+    }
+
+    /**
      * Get data by key.
      *
      * @param string $key
