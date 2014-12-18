@@ -250,6 +250,54 @@ class Client
     }
 
     /**
+     * Get first slab in server that has items.
+     * @return [type] [description]
+     */
+    public function getFirstSlab()
+    {
+        $data = $this->request('stats items');
+
+        if (!empty($data) && preg_match('#STAT items:(?<id>\d+):number \d+#', $data, $match)) {
+            return $match['id'];
+        }
+
+        return false;
+    }
+
+    public function getFirstItemValueInSlab($slab)
+    {
+        $data = $this->request('stats cachedump ' . $slab . ' 1');
+        $key = null;
+
+        if (!empty($data) && preg_match('#ITEM (?<key>[^\s]+)#', $data, $match)) {
+            $key = $match['key'];
+        }
+
+        if (empty($key)) {
+            return false;
+        }
+
+        return $this->get($key);
+    }
+
+    /**
+     * Get first item value in server.
+     *
+     * @return mixed
+     *   Data.
+     */
+    public function getFirstItemValue()
+    {
+        $slab = $this->getFirstSlab();
+
+        if (empty($slab)) {
+            return false;
+        }
+
+        return $this->getFirstItemValueInSlab($slab);
+    }
+
+    /**
      * Get data by key.
      *
      * @param string $key
