@@ -4,6 +4,7 @@
 
 # Ignore built file
 *.phar
+memcached-cli
 
 # Ignore sublime files
 *.sublime-*
