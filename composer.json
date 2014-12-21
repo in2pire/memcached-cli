@@ -18,8 +18,7 @@
         "php": ">=5.4",
         "symfony/process": "@stable",
         "symfony/finder": "@stable",
-        "in2pire/utility": "1.x-dev",
-        "in2pire/cli": "1.x-dev"
+        "in2pire/cli": "@stable"
     },
     "autoload": {
         "psr-4": { "In2pire\\Memcached\\": "src/In2pire/Memcached/" }
