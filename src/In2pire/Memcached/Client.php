@@ -160,7 +160,7 @@ class Client
 
     public function getSlabsStats()
     {
-        $stats = [];
+        $slabs = [];
         $data = $this->request('stats items');
 
         if (!empty($data)) {
@@ -170,7 +170,7 @@ class Client
                 $row = trim($row);
 
                 if (preg_match('#^STAT items:(?<id>\d+):(?<property>\w+) (?<value>\d+)$#', $row, $match)) {
-                    $stats[$match['id']][$match['property']] = $match['value'];
+                    $slabs[$match['id']][$match['property']] = $match['value'];
                 }
             }
         }
@@ -184,12 +184,47 @@ class Client
                 $row = trim($row);
 
                 if (preg_match('#^STAT (?<id>\d+):(?<property>\w+) (?<value>\d+)$#', $row, $match)) {
-                    $stats[$match['id']][$match['property']] = $match['value'];
+                    $slabs[$match['id']][$match['property']] = $match['value'];
                 }
             }
         }
 
-        return $stats;
+        $defaults = [
+            'number' => null,
+            'age' => null,
+            'evicted' => null,
+            'evicted_nonzero' => null,
+            'evicted_time' => null,
+            'outofmemory' => null,
+            'tailrepairs' => null,
+            'reclaimed' => null,
+            'expired_unfetched' => null,
+            'evicted_unfetched' => null,
+            'crawler_reclaimed' => null,
+            'chunk_size' => null,
+            'chunks_per_page' => null,
+            'total_pages' => null,
+            'total_chunks' => null,
+            'used_chunks' => null,
+            'free_chunks' => null,
+            'free_chunks_end' => null,
+            'mem_requested' => null,
+            'get_hits' => null,
+            'cmd_set' => null,
+            'delete_hits' => null,
+            'incr_hits' => null,
+            'decr_hits' => null,
+            'cas_hits' => null,
+            'cas_badval' => null,
+            'touch_hits' => null,
+        ];
+
+        // Ensure data structure.
+        foreach ($slabs as $slabId => $slab) {
+            $slabs[$slabId] += $defaults;
+        }
+
+        return $slabs;
     }
 
     /**
