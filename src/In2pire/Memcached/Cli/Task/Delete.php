@@ -15,9 +15,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use In2pire\Memcached\Client as MemcachedCli;
 
 /**
- * Get data by key.
+ * Delete a key.
  */
-final class Get extends \In2pire\Cli\Task\CliTask
+final class Delete extends \In2pire\Cli\Task\CliTask
 {
     use MemcachedTask;
     use MemcachedKeyTask;
@@ -25,7 +25,7 @@ final class Get extends \In2pire\Cli\Task\CliTask
     /**
      * @inheritdoc
      */
-    protected $id = 'get';
+    protected $id = 'delete';
 
     /**
      * @inheritdoc
@@ -35,14 +35,18 @@ final class Get extends \In2pire\Cli\Task\CliTask
         $connection = $this->getConnection();
         $key = $input->getArgument('key');
         $hash = $this->getHashFunction();
-        $data = $connection->get($key, $hash);
+        $result = $connection->delete($key, $hash);
 
         if ($connection->getResultCode() == MemcachedCli::KEY_NOT_FOUND) {
             $message = 'Could not found ' . $key . (empty($hash) ? '' : (' using ' . $hash));
             $output->writeln('<error>' . $message . '</error>');
             return static::RETURN_ERROR;
+        } elseif (!$result) {
+            $message = 'Could not delete ' . $key . (empty($hash) ? '' : (' using ' . $hash));
+            $output->writeln('<error>' . $message . '</error>');
+            return static::RETURN_ERROR;
         }
 
-        $this->renderItemValue($output, $data, $this->getFormat());
+        $output->writeln('DELETED');
     }
 }

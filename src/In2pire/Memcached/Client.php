@@ -24,9 +24,14 @@ class Client
     const HASH_MD5 = 'md5';
 
     /**
-     * sha1 hash function
+     * sha1 hash function.
      */
     const HASH_SHA1 = 'sha1';
+
+    /**
+     * Key not found.
+     */
+    const KEY_NOT_FOUND = \Memcached::RES_NOTFOUND;
 
     /**
      * List of opened connections.
@@ -423,9 +428,33 @@ class Client
                 break;
         }
 
-        $data = $this->connection->get($key);
+        return $this->connection->get($key);
+    }
 
-        return $data;
+    /**
+     * Delete by key.
+     *
+     * @param string $key
+     *   Key.
+     * @param string $hash
+     *   Hash function to hash key before delete from server.
+     *
+     * @return mixed|boolean
+     *   Data returned from server or False.
+     */
+    public function delete($key, $hash = null)
+    {
+        switch ($hash) {
+            case static::HASH_MD5:
+                $key = md5($key);
+                break;
+
+            case static::HASH_SHA1:
+                $key = sha1($key);
+                break;
+        }
+
+        return $this->connection->delete($key);
     }
 
     /**
