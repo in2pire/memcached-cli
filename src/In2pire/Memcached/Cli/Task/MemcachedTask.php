@@ -25,7 +25,7 @@ trait MemcachedTask
      */
     public function getConnection()
     {
-        return $this->data['connection'];
+        return empty($this->data['connection']) ? null : $this->data['connection'];
     }
 
     /**
@@ -36,7 +36,7 @@ trait MemcachedTask
      */
     public function getHost()
     {
-        return $this->data['host'];
+        return empty($this->data['host']) ? 'localhost' : $this->data['host'];
     }
 
     /**
@@ -47,7 +47,7 @@ trait MemcachedTask
      */
     public function getPort()
     {
-        return $this->data['port'];
+        return empty($this->data['port']) ? '11211' : $this->data['port'];
     }
 
     /**
@@ -58,7 +58,7 @@ trait MemcachedTask
      */
     public function getFormat()
     {
-        return $this->data['format'];
+        return empty($this->data['format']) ? 'json' : $this->data['format'];
     }
 
     /**

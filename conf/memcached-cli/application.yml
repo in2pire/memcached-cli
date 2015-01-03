@@ -2,6 +2,7 @@ name: Memcached Cli
 version: '@version'
 build: '@build'
 commands:
+  - in2pire.memcached.cli.command.delete
   - in2pire.memcached.cli.command.get
   - in2pire.memcached.cli.command.get-first
   - in2pire.memcached.cli.command.get-keys
