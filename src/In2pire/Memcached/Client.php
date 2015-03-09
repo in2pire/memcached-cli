@@ -432,6 +432,23 @@ class Client
     }
 
     /**
+     * Check whether a key exists.
+     *
+     * @param string $key
+     *   Key.
+     * @param string $hash
+     *   Hash function to hash key before get from server.
+     *
+     * @return boolean
+     *   True or False.
+     */
+    public function hasKey($key, $hash = null)
+    {
+        $this->get($key, $hash);
+        return $this->getResultCode() != static::KEY_NOT_FOUND;
+    }
+
+    /**
      * Delete by key.
      *
      * @param string $key
