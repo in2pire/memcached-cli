@@ -1,33 +1,13 @@
+inherits:
+  - command.core.get
 description: Get value by key
 arguments:
   key:
     name: key
     mode: 1
     description: 'Key'
-options:
-  host:
-    name: host
-    mode: 4
-    default: localhost
-    description: 'Hostname'
-  port:
-    name: port
-    mode: 4
-    default: 11211
-    description: 'Port'
-  hash:
-    name: hash
-    mode: 4
-    description: 'Hash key before get. Possible values: <empty>, sha1, md5'
-  format:
-    name: format
-    mode: 4
-    default: json
-    description: 'How to display result. Possible values: json, export, dump, serialize'
-questions:
-validators:
-  - in2pire.memcached.cli.validator.memcached-connection
-  - in2pire.memcached.cli.validator.hash
-  - in2pire.memcached.cli.validator.data-formatter
+options: []
+questions: []
+validators: []
 tasks:
   - in2pire.memcached.cli.task.get

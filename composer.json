@@ -17,7 +17,7 @@
     "require": {
         "php": ">=5.4",
         "symfony/process": "@stable",
-        "in2pire/cli": "@stable",
+        "in2pire/cli": ">=1.3.0",
         "in2pire/cli-compiler": "@stable"
     },
     "autoload": {
