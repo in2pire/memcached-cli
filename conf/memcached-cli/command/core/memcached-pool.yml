@@ -1,0 +1,8 @@
+options:
+  pool:
+    name: pool
+    mode: 4
+    default: localhost:11211
+    description: 'Server pool, separated by comma. E.g: localhost:11211,localhost:11212'
+validators:
+  memcached-connection-pool: in2pire.memcached.cli.validator.memcached-connection-pool

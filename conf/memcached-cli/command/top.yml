@@ -1,0 +1,14 @@
+inherits:
+  - command.core.memcached-pool
+description: Get real-time stats
+arguments: []
+options:
+  freq:
+    name: freq
+    mode: 4
+    default: 1
+    description: Frequency. Min is 0.5
+questions: []
+validators: []
+tasks:
+  - in2pire.memcached.cli.task.top
