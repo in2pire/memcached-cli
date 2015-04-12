@@ -29,6 +29,11 @@ class Client
     const HASH_SHA1 = 'sha1';
 
     /**
+     * Action is success
+     */
+    const SUCCESS = \Memcached::RES_SUCCESS;
+
+    /**
      * Key not found.
      */
     const KEY_NOT_FOUND = \Memcached::RES_NOTFOUND;
@@ -429,6 +434,23 @@ class Client
         }
 
         return $this->connection->get($key);
+    }
+
+    /**
+     * Check whether a key exists.
+     *
+     * @param string $key
+     *   Key.
+     * @param string $hash
+     *   Hash function to hash key before get from server.
+     *
+     * @return boolean
+     *   True or False.
+     */
+    public function hasKey($key, $hash = null)
+    {
+        $this->get($key, $hash);
+        return $this->getResultCode() != static::KEY_NOT_FOUND;
     }
 
     /**

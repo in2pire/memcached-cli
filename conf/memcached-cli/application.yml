@@ -10,3 +10,4 @@ commands:
   - in2pire.memcached.cli.command.settings
   - in2pire.memcached.cli.command.slabs
   - in2pire.memcached.cli.command.stats
+  - in2pire.memcached.cli.command.top

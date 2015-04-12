@@ -1,0 +1,13 @@
+options:
+  host:
+    name: host
+    mode: 4
+    default: localhost
+    description: 'Hostname'
+  port:
+    name: port
+    mode: 4
+    default: 11211
+    description: 'Port'
+validators:
+  memcached-connection: in2pire.memcached.cli.validator.memcached-connection

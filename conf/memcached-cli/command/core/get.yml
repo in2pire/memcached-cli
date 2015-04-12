@@ -1,0 +1,15 @@
+inherits:
+  - command.core.memcached
+options:
+  hash:
+    name: hash
+    mode: 4
+    description: 'Hash key before get. Possible values: <empty>, sha1, md5'
+  format:
+    name: format
+    mode: 4
+    default: json
+    description: 'How to display result. Possible values: json, export, dump, serialize'
+validators:
+  hash: in2pire.memcached.cli.validator.hash
+  data-formatter: in2pire.memcached.cli.validator.data-formatter

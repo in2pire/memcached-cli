@@ -1,0 +1,9 @@
+inherits:
+  - command.core.memcached
+options:
+  hash:
+    name: hash
+    mode: 4
+    description: 'Hash key before get. Possible values: <empty>, sha1, md5'
+validators:
+  hash: in2pire.memcached.cli.validator.hash

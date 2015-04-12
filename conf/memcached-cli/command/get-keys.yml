@@ -1,3 +1,5 @@
+inherits:
+  - command.core.memcached
 description: Get keys in slab (use with slab argument) or in server
 arguments:
   slab:
@@ -5,23 +7,12 @@ arguments:
     mode: 2
     description: Slab ID
 options:
-  host:
-    name: host
-    mode: 4
-    default: localhost
-    description: 'Hostname'
-  port:
-    name: port
-    mode: 4
-    default: 11211
-    description: 'Port'
   format:
     name: format
     mode: 4
     description: 'How to display result. Possible values: <empty> (default), json'
-questions:
+questions: []
 validators:
-  - in2pire.memcached.cli.validator.memcached-connection
   - in2pire.memcached.cli.validator.memcached-slab
   - in2pire.memcached.cli.validator.array-formatter
 tasks:

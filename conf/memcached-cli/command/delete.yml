@@ -1,27 +1,13 @@
+inherits:
+  - command.core.delete
 description: Delete a key
 arguments:
   key:
     name: key
     mode: 1
     description: 'Key'
-options:
-  host:
-    name: host
-    mode: 4
-    default: localhost
-    description: 'Hostname'
-  port:
-    name: port
-    mode: 4
-    default: 11211
-    description: 'Port'
-  hash:
-    name: hash
-    mode: 4
-    description: 'Hash key before get. Possible values: <empty>, sha1, md5'
-questions:
-validators:
-  - in2pire.memcached.cli.validator.memcached-connection
-  - in2pire.memcached.cli.validator.hash
+options: []
+questions: []
+validators: []
 tasks:
   - in2pire.memcached.cli.task.delete

@@ -61,7 +61,7 @@ final class GetKeys extends \In2pire\Cli\Task\CliTask
 
         if (empty($keys)) {
             $message = 'Could not found data';
-            $output->writeln('<error>' . $message . '</error>');
+            $output->getErrorOutput()->writeln('<error>' . $message . '</error>');
             return static::RETURN_ERROR;
         }
 
