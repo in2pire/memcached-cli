@@ -36,10 +36,14 @@ final class Get extends \In2pire\Cli\Task\CliTask
         $key = $input->getArgument('key');
         $hash = $this->getHashFunction();
         $data = $connection->get($key, $hash);
+        $resultCode = $connection->getResultCode();
 
-        if ($connection->getResultCode() == MemcachedCli::KEY_NOT_FOUND) {
+        if (MemcachedCli::KEY_NOT_FOUND == $resultCode) {
             $message = 'Could not found ' . $key . (empty($hash) ? '' : (' using ' . $hash));
-            $output->writeln('<error>' . $message . '</error>');
+            $output->getErrorOutput()->writeln('<error>' . $message . '</error>');
+            return static::RETURN_ERROR;
+        } elseif (MemcachedClient::SUCCESS != $resultCode) {
+            $output->getErrorOutput()->writeln('<error>' . $connection->getResultMessage() . '</error>');
             return static::RETURN_ERROR;
         }
 

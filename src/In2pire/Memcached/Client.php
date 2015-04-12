@@ -29,6 +29,11 @@ class Client
     const HASH_SHA1 = 'sha1';
 
     /**
+     * Action is success
+     */
+    const SUCCESS = \Memcached::RES_SUCCESS;
+
+    /**
      * Key not found.
      */
     const KEY_NOT_FOUND = \Memcached::RES_NOTFOUND;
