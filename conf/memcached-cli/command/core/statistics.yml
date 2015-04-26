@@ -5,6 +5,7 @@ options:
     name: format
     mode: 4
     default: table
-    description: 'Display result as table or json. Possible values: table, json'
+    possible-values: ['table', 'json']
+    description: 'Display result as table or json'
 validators:
   statistics-formatter: in2pire.memcached.cli.validator.statistics-formatter

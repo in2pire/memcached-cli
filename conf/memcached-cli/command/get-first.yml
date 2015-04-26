@@ -11,7 +11,8 @@ options:
     name: format
     mode: 4
     default: json
-    description: 'How to display result. Possible values: json, export, dump, serialize'
+    possible-values: ['json', 'export', 'dump', 'serialize']
+    description: 'How to display result'
 questions: []
 validators:
   - in2pire.memcached.cli.validator.data-formatter

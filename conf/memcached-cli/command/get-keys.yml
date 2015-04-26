@@ -10,7 +10,8 @@ options:
   format:
     name: format
     mode: 4
-    description: 'How to display result. Possible values: <empty> (default), json'
+    possible-values: ['json']
+    description: 'How to display result'
 questions: []
 validators:
   - in2pire.memcached.cli.validator.memcached-slab

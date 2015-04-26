@@ -4,6 +4,7 @@ options:
   hash:
     name: hash
     mode: 4
-    description: 'Hash key before get. Possible values: <empty>, sha1, md5'
+    possible-values: ['sha1', 'md5']
+    description: 'Hash key before get'
 validators:
   hash: in2pire.memcached.cli.validator.hash
