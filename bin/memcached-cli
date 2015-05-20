@@ -19,5 +19,5 @@ define('REQUEST_TIME', (int) $_SERVER['REQUEST_TIME']);
 require APP_PATH . '/../vendor/autoload.php';
 
 // Run application.
-$app = new In2pire\Memcached\Cli\Application();
+$app = new In2pire\Memcached\Cli\CliApplication();
 $app->run();
