@@ -16,9 +16,9 @@
     },
     "require": {
         "php": ">=5.4",
-        "symfony/process": "@stable",
-        "in2pire/cli": ">=1.6.0",
-        "in2pire/cli-compiler": ">=1.0.10"
+        "symfony/process": "2.7.x",
+        "in2pire/cli": ">=1.8.0",
+        "in2pire/cli-compiler": ">=1.1.0"
     },
     "autoload": {
         "psr-4": { "In2pire\\Memcached\\": "src/In2pire/Memcached/" }
