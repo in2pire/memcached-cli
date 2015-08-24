@@ -12,6 +12,7 @@ namespace In2pire\Memcached\Cli\Task;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Process\Process;
@@ -548,15 +549,23 @@ final class Top extends \In2pire\Cli\Task\CliTask
 
         $lines[] = '<info>(ctrl-c to quit.)</info>';
 
+        // Init buffered output.
+        $buffer = new BufferedOutput($output->getVerbosity(), $output->isDecorated(), $output->getFormatter());
+
+        // Render output to buffer.
+        foreach ($lines as $line) {
+            $buffer->writeln($line);
+        }
+
         // Reset screen.
         if ($clear) {
             $output->write("\033[2J\033[1;1H");
         }
 
-        // Render output.
-        foreach ($lines as $line) {
-            $output->writeln($line);
-        }
+        // Show new stats.
+        $output->write($buffer->fetch());
+
+        unset($buffer, $lines, $headers, $columns);
     }
 
     /**
