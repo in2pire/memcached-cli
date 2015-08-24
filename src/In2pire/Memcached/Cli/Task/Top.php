@@ -557,15 +557,17 @@ final class Top extends \In2pire\Cli\Task\CliTask
             $buffer->writeln($line);
         }
 
+        $content = $buffer->fetch();
+
         // Reset screen.
         if ($clear) {
-            $output->write("\033[2J\033[1;1H");
+            echo "\033[2J\033[1;1H";
         }
 
         // Show new stats.
-        $output->write($buffer->fetch());
+        echo $content;
 
-        unset($buffer, $lines, $headers, $columns);
+        unset($content, $buffer, $lines, $headers, $columns);
     }
 
     /**
