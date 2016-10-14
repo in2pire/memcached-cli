@@ -1,28 +1,29 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8258f10cf58f87534137cedbc444ada",
+    "hash": "5ef48b1cab4bdc434aa158c5654101cb",
+    "content-hash": "1ec8d48c470afa1b211b13e72bb23c3e",
     "packages": [
         {
             "name": "in2pire/cli",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "target-dir": "In2pire/Cli",
             "source": {
                 "type": "git",
                 "url": "https://github.com/in2pire/in2pire-cli.git",
-                "reference": "084c3b93f6ca37f183fb27211d3047229f843d66"
+                "reference": "7b3b55a16df299c31dd78031fc2a2699676715bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/in2pire/in2pire-cli/zipball/084c3b93f6ca37f183fb27211d3047229f843d66",
-                "reference": "084c3b93f6ca37f183fb27211d3047229f843d66",
+                "url": "https://api.github.com/repos/in2pire/in2pire-cli/zipball/7b3b55a16df299c31dd78031fc2a2699676715bd",
+                "reference": "7b3b55a16df299c31dd78031fc2a2699676715bd",
                 "shasum": ""
             },
             "require": {
-                "in2pire/utility": ">=1.0.2",
+                "in2pire/utility": ">=1.0.3",
                 "php": ">=5.4",
                 "symfony/console": "2.7.x",
                 "symfony/yaml": "2.7.x"
@@ -55,21 +56,21 @@
                 "in2pire",
                 "inspire"
             ],
-            "time": "2015-06-21 09:09:54"
+            "time": "2016-10-14 07:32:21"
         },
         {
             "name": "in2pire/cli-compiler",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "target-dir": "In2pire/Compiler/Cli",
             "source": {
                 "type": "git",
                 "url": "https://github.com/in2pire/in2pire-cli-compiler.git",
-                "reference": "ebf6fafc4e9f5ef21968eb23badf34df0094c62b"
+                "reference": "954020706fb605b5ecb3922280bb75f5d4874f4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/in2pire/in2pire-cli-compiler/zipball/ebf6fafc4e9f5ef21968eb23badf34df0094c62b",
-                "reference": "ebf6fafc4e9f5ef21968eb23badf34df0094c62b",
+                "url": "https://api.github.com/repos/in2pire/in2pire-cli-compiler/zipball/954020706fb605b5ecb3922280bb75f5d4874f4a",
+                "reference": "954020706fb605b5ecb3922280bb75f5d4874f4a",
                 "shasum": ""
             },
             "require": {
@@ -99,21 +100,21 @@
                 "in2pire",
                 "inspire"
             ],
-            "time": "2015-06-21 09:25:49"
+            "time": "2016-10-14 07:47:19"
         },
         {
             "name": "in2pire/utility",
-            "version": "v1.0.2",
+            "version": "1.0.3",
             "target-dir": "In2pire/Component/Utility",
             "source": {
                 "type": "git",
                 "url": "https://github.com/in2pire/in2pire-utility.git",
-                "reference": "b83880dc1d89c5bb826d89cfb9c9e7664ce3e78c"
+                "reference": "def4074504196694cbee3486d5f1a2ec457ab727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/in2pire/in2pire-utility/zipball/b83880dc1d89c5bb826d89cfb9c9e7664ce3e78c",
-                "reference": "b83880dc1d89c5bb826d89cfb9c9e7664ce3e78c",
+                "url": "https://api.github.com/repos/in2pire/in2pire-utility/zipball/def4074504196694cbee3486d5f1a2ec457ab727",
+                "reference": "def4074504196694cbee3486d5f1a2ec457ab727",
                 "shasum": ""
             },
             "require": {
@@ -143,29 +144,76 @@
                 "inspire",
                 "utilities"
             ],
-            "time": "2015-03-09 16:51:33"
+            "time": "2016-10-14 07:25:32"
         },
         {
-            "name": "symfony/console",
-            "version": "v2.7.1",
+            "name": "psr/log",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806"
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/564398bc1f33faf92fc2ec86859983d30eb81806",
-                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2016-10-10 12:19:37"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.7.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "91a8fb9f91aeb00caaeab95818063e3a96bff9e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/91a8fb9f91aeb00caaeab95818063e3a96bff9e2",
+                "reference": "91a8fb9f91aeb00caaeab95818063e3a96bff9e2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/debug": "~2.7,>=2.7.2"
             },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/event-dispatcher": "~2.1",
-                "symfony/phpunit-bridge": "~2.7",
                 "symfony/process": "~2.1"
             },
             "suggest": {
@@ -182,7 +230,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Console\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -200,27 +251,81 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-10 15:30:22"
+            "time": "2016-09-27 17:33:51"
         },
         {
-            "name": "symfony/process",
-            "version": "v2.7.1",
+            "name": "symfony/debug",
+            "version": "v2.8.12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Process.git",
-                "reference": "552d8efdc80980cbcca50b28d626ac8e36e3cdd1"
+                "url": "https://github.com/symfony/debug.git",
+                "reference": "8c29235936a47473af16fb91c7c4b7b193c5693c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/552d8efdc80980cbcca50b28d626ac8e36e3cdd1",
-                "reference": "552d8efdc80980cbcca50b28d626ac8e36e3cdd1",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/8c29235936a47473af16fb91c7c4b7b193c5693c",
+                "reference": "8c29235936a47473af16fb91c7c4b7b193c5693c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "psr/log": "~1.0"
+            },
+            "conflict": {
+                "symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
+            },
+            "require-dev": {
+                "symfony/class-loader": "~2.2|~3.0.0",
+                "symfony/http-kernel": "~2.3.24|~2.5.9|~2.6,>=2.6.2|~3.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Debug\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Debug Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-09-06 10:55:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.7.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "e134ba500a16bead3a059a087b652182f4f85481"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e134ba500a16bead3a059a087b652182f4f85481",
+                "reference": "e134ba500a16bead3a059a087b652182f4f85481",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
             },
             "type": "library",
             "extra": {
@@ -231,7 +336,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Process\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -249,27 +357,24 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-08 09:37:21"
+            "time": "2016-09-29 02:20:21"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.7.1",
+            "version": "v2.7.19",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160"
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "1a9d264853100c597649f0218bb3c08c7bb3cbe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9808e75c609a14f6db02f70fccf4ca4aab53c160",
-                "reference": "9808e75c609a14f6db02f70fccf4ca4aab53c160",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1a9d264853100c597649f0218bb3c08c7bb3cbe8",
+                "reference": "1a9d264853100c597649f0218bb3c08c7bb3cbe8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
             },
             "type": "library",
             "extra": {
@@ -280,7 +385,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -298,7 +406,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-10 15:30:22"
+            "time": "2016-08-31 13:10:08"
         }
     ],
     "packages-dev": [],
