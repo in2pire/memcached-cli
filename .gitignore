@@ -1,7 +1,6 @@
 # Ignore composer files
 /bin/
 /vendor/
-/composer.lock
 
 # Ignore built file
 *.phar

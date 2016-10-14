@@ -10,38 +10,46 @@
 
 namespace In2pire\Memcached\Cli;
 
-class Application extends \In2pire\Cli\CliApplication
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use In2pire\Cli\Application as BaseApplication;
+
+class Application extends BaseApplication
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function boot()
+    public function doRun(InputInterface $input, OutputInterface $output)
     {
-        if ($this->booted) {
-            // Already booted.
-            return $this;
+        if (true === $input->hasParameterOption(array('--bash-completion'))) {
+            $output->writeln($this->getBashCompletion());
+            return 0;
         }
 
-        // Boot parent.
-        parent::boot();
-
-        // Check memcached extension.
-        if (!extension_loaded('memcached')) {
-            $this->response->writeln('<error>Could not found memcached extension<error>');
-            return false;
+        if (true === $input->hasParameterOption(array('--version', '-V'))) {
+            $output->writeln($this->getLongVersion());
+            return 0;
         }
 
-        $description = $this->runner->getDescription();
+        $name = $this->getCommandName($input);
 
-        if (!empty($description)) {
-            $description .= "\n\n";
+        if (true === $input->hasParameterOption(array('--help', '-h'))) {
+            $name = 'help';
         }
 
-        $description .= '<comment>igbinary support</comment>  ' . (\Memcached::HAVE_IGBINARY ? 'yes' : 'no') . "\n";
-        $description .= '<comment>json support</comment>      ' . (\Memcached::HAVE_JSON ? 'yes' : 'no');
+        if (!$name) {
+            $name = 'list';
+        }
 
-        $this->runner->setDescription($description);
+        if ('help' !== $name && 'list' !== $name) {
+            // Check memcached extension.
+            if (!extension_loaded('memcached')) {
+                $output->getErrorOutput()->writeln('<error>Could not found memcached extension</error>');
+                return 1;
+            }
+        }
 
-        return $this;
+        return parent::doRun($input, $output);
     }
 }

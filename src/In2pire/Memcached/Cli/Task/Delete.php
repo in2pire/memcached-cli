@@ -12,7 +12,7 @@ namespace In2pire\Memcached\Cli\Task;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use In2pire\Memcached\Client as MemcachedCli;
+use In2pire\Memcached\Client as MemcachedClient;
 
 /**
  * Delete a key.
@@ -38,7 +38,7 @@ final class Delete extends \In2pire\Cli\Task\CliTask
         $result = $connection->delete($key, $hash);
         $resultCode = $connection->getResultCode();
 
-        if (MemcachedCli::KEY_NOT_FOUND == $resultCode) {
+        if (MemcachedClient::KEY_NOT_FOUND == $resultCode) {
             $message = 'Could not found ' . $key . (empty($hash) ? '' : (' using ' . $hash));
             $output->getErrorOutput()->writeln('<error>' . $message . '</error>');
             return static::RETURN_ERROR;

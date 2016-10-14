@@ -12,10 +12,10 @@ namespace In2pire\Memcached\Cli\Task;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Process\Process;
-use In2pire\Memcached\Client as MemcachedClient;
 
 /**
  * Get server statistics.
@@ -549,15 +549,25 @@ final class Top extends \In2pire\Cli\Task\CliTask
 
         $lines[] = '<info>(ctrl-c to quit.)</info>';
 
-        // Reset screen.
-        if ($clear) {
-            $output->write("\033[2J\033[1;1H");
+        // Init buffered output.
+        $buffer = new BufferedOutput($output->getVerbosity(), $output->isDecorated(), $output->getFormatter());
+
+        // Render output to buffer.
+        foreach ($lines as $line) {
+            $buffer->writeln($line);
         }
 
-        // Render output.
-        foreach ($lines as $line) {
-            $output->writeln($line);
+        $content = $buffer->fetch();
+
+        // Reset screen.
+        if ($clear) {
+            echo "\033[2J\033[1;1H";
         }
+
+        // Show new stats.
+        echo $content;
+
+        unset($content, $buffer, $lines, $headers, $columns);
     }
 
     /**

@@ -13,7 +13,6 @@ namespace In2pire\Memcached\Cli\Task;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\TableHelper;
-use In2pire\Memcached\Client as MemcachedClient;
 
 /**
  * Get server statistics.
